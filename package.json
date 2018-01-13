@@ -1,0 +1,14 @@
+{
+  "name": "hrhb-content",
+  "version": "1.0.0",
+  "description": "john and tim's excellent adventure",
+  "main": "",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "manzoid <manzoid@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^22.0.6"
+  }
+}
