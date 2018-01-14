@@ -1,4 +1,5 @@
-|-building-blocks - basic skill tests
+```
+|-building-blocks - Basic skills problems
   |---linked-lists
 |-single-function - Daily Diagnostics and Follow Ups
  |---problem-guides - Reference solutions
@@ -11,3 +12,4 @@
   |-----path-sum
   |-----path-sum-ii
 
+```
