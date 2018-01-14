@@ -1,4 +1,4 @@
-const hasPathSum = require('../../problems/path-sum/path-sum.js');
+const hasPathSum = require('../../problems/has-path-sum/has-path-sum.js');
 
 describe('hasPathSum', () => {
 

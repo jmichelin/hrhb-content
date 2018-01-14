@@ -1,12 +1,11 @@
-const pathSumII = require("../../problems/path-sum-ii/path-sum-ii.js");
+const getTargetSumPaths = require('../../problems/get-target-sum-paths/get-target-sum-paths');
 
-describe("path-sum-ii", () => {
-  it("will return empty array if passed in empty root node", () => {
-    expect(pathSumII()).toEqual([]);
+describe('getTargetSumPaths', () => {
+  it('will return empty array if passed in empty root node', () => {
+    expect(getTargetSumPaths()).toEqual([]);
   });
 
-  it("will return array of matching paths", () => {
-    let targetValue = [[5, 4, 11, 2], [5, 8, 4, 5]];
+  it('will return array of matching paths', () => {
     const root = {
       val: 5,
       left: {
@@ -48,6 +47,7 @@ describe("path-sum-ii", () => {
         }
       }
     };
-    expect(pathSumII(root, 22)).toEqual(targetValue);
+    const expected = [[5, 4, 11, 2], [5, 8, 4, 5]];
+    expect(getTargetSumPaths(root, 22)).toEqual(expected);
   });
 });
