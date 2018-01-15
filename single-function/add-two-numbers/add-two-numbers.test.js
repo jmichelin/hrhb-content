@@ -24,7 +24,7 @@ describe('addTwoNumbers', () => {
       },
     };
     let expected = { val: 7, next: { val: 0, next: { val: 8, next: null } } };
-    
+
     expect(addTwoNumbers(listOne, listTwo)).toEqual(expected);
   });
 });
