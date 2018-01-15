@@ -1,4 +1,4 @@
-const getTargetSumPaths = require('../../problems/get-target-sum-paths/get-target-sum-paths');
+const getTargetSumPaths = require('02-impl-revision');
 
 describe('getTargetSumPaths', () => {
   it('will return empty array if passed in empty root node', () => {
