@@ -30,5 +30,8 @@ const hasPathSum = function(node, sum) {
   // return whether recursively calling either the left branch OR the right branch resolves to true
 };
 
+// High Level Overview
+// Traverse to each leaf decrementing target sum by each nodes value along the way. Return whether decremented exactly to zero.
+
 // Big-O
 // Traverses all nodes. Despite some short-circuiting due to the OR clause, algo is effectively O(n).
