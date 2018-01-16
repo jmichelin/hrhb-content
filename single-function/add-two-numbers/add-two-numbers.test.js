@@ -1,4 +1,4 @@
-const getTargetSumPaths = require('./02-impl-revision.js');
+const addTwoNumbers = require('./02-impl-revision.js');
 
 describe('addTwoNumbers', () => {
   it('will do the thing', () => {
