@@ -1,0 +1,5 @@
+# Javascript: Event loop
+
+* [call stack and the event loop](https://www.youtube.com/watch?v=8aGhZQkoFbQ&feature=youtu.be#t=2m20s) -- THIS VIDEO IS GREAT. Watch at 1.5x speed, at the start point I provided, and it's only ~15m long.
+* [Loupe](http://latentflip.com/loupe) -- the call stack / event loop visualizer tool that the presenter above made.
+* [What you should know to really understand the Node JS event loop](https://medium.com/the-node-js-collection/what-you-should-know-to-really-understand-the-node-js-event-loop-and-its-metrics-c4907b19da4c) -- precise description of what happens in Node's event loop. The previous presenter was focusing on browser interactions, but because a server _receives_ requests, it's important to enrich the mental model and not pretend there's just one message queue to process. Each phase has its own queue. "I/O polling" phase is when incoming requests get queued for processing. "I/O callbacks" phase is when your code runs to serve those requests. If you take too long in the I/O callbacks phase, you slow down both accepting/queuing new requests AND processing existing, queued ones.
