@@ -25,9 +25,9 @@ const root = {
 };
 
 const hasPathSum = function(node, sum) {
-  // base condition: if no node, return whether the sum has decremented to exactly 0
-  // subtract the current node value from the running sum
-  // return whether recursively calling either the left branch OR the right branch resolves to true
+  // base condition #1: if no node, return false.
+  // base condition #2: if this is a leaf, return whether the sum matches the current value
+  // recurse left and right, decrementing by current value. Return whether either branch is true.
 };
 
 // Big-O
