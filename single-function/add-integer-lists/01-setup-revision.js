@@ -26,28 +26,27 @@ const listTwo = {
   },
 };
 
+
+
 const addTwoNumbers = (l1, l2) => {
-  //console.log(l1);
-  let carryover = 0,
-    dummyhead = { val: 0, next: null },
-    curr = dummyhead;
+  let carryOver = 0; // init carry over to allow for in place digit summing
+  const dummyHead = { val: 0, next: null }; //
+  let curr = dummyHead;
 
   while (l1 !== null || l2 !== null) {
-    let list1Value = l1 !== null ? l1.val : 0;
-    let list2Value = l2 !== null ? l2.val : 0;
-    let sum = list1Value + list2Value + carryover;
-    carryover = Math.floor(sum / 10);
+    const list1Value = l1 !== null ? l1.val : 0;
+    const list2Value = l2 !== null ? l2.val : 0;
+    const sum = list1Value + list2Value + carryOver;
+    carryOver = Math.floor(sum / 10);
     curr.next = { val: sum % 10, next: null };
     curr = curr.next;
     if (l1 !== null) l1 = l1.next;
     if (l2 !== null) l2 = l2.next;
   }
 
-  if (carryover > 0) {
-    curr.next = { val: carryover, next: null };
+  if (carryOver > 0) {
+    curr.next = { val: carryOver, next: null };
   }
 
-  return dummyhead.next;
+  return dummyHead.next;
 };
-
-addTwoNumbers(listOne, listTwo);
