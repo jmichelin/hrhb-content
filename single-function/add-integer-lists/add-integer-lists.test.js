@@ -1,8 +1,8 @@
-const addTwoNumbers = require('./02-impl-revision.js');
+const addIntegerLists = require('./02-impl-revision.js');
 
-describe('addTwoNumbers', () => {
-  it('will do the thing', () => {
-    const listOne = {
+describe('addIntegerLists', () => {
+  it('given two lists, 2->4->3 and 5->6->4 will return 7->0->8', () => {
+    const listA = {
       val: 2,
       next: {
         val: 4,
@@ -13,7 +13,7 @@ describe('addTwoNumbers', () => {
       },
     };
 
-    const listTwo = {
+    const listB = {
       val: 5,
       next: {
         val: 6,
@@ -25,6 +25,6 @@ describe('addTwoNumbers', () => {
     };
     let expected = { val: 7, next: { val: 0, next: { val: 8, next: null } } };
 
-    expect(addTwoNumbers(listOne, listTwo)).toEqual(expected);
+    expect(addIntegerLists(listA, listB)).toEqual(expected);
   });
 });

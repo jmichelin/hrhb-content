@@ -6,6 +6,8 @@ Add the two numbers and return it as a linked list.
 
 You may assume the two numbers do not contain any leading zero, unless the entire number is 0.
 
+A nodes values will be val and next.
+
 ```
 Example
 
