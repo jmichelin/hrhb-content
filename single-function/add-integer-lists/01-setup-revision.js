@@ -1,52 +1,31 @@
-// Lists
-// 2->4->3
-// 5->6->4
+/*
+// Strategy: iterate both number-lists pairwise, summing each pair of digits plus any carry from the previous pair, building a new number-list as we go.
+// Big O is of course O(n), have to visit all nodes in both lists.
 
-// Returned Value 7->0->8
+// Transformation steps (list A value + list B value + carry over)
+  Input: (2 -> 4 -> 3), (5 -> 6 -> 4)
+  Output: (7 -> 0 -> 8)
 
-const listOne = {
-  val: 2,
-  next: {
-    val: 4,
-    next: {
-      val: 3,
-      next: null,
-    },
-  },
+Expressed as regular arithmetic:
+ 342
++465
+ ---
+ 807
+
+We sum each pair of nodes, starting with 0 carry...
+
+2 + 5 (+ 0 carry) = 7; sum is 7, new carry is 0
+4 + 6 (+ 0 carry) = 10; sum is 0, new carry is 1
+3 + 4 (+ 1 carry) = 8; sum is 8, new carry is 0
+
+Output should be:
+{ val: 7, next: { val: 0, next: { val: 8, next: null, }}}
+
+
+const addIntegerLists = (listA, listB) => {
+  // while either list has nodes, or there's any carryover
+      // sum the values of each pair of nodes + carryover
+      // calculate the current sum and the new carryover
+      // append current sum to return list
 };
-
-const listTwo = {
-  val: 5,
-  next: {
-    val: 6,
-    next: {
-      val: 4,
-      next: null,
-    },
-  },
-};
-
-
-
-const addTwoNumbers = (l1, l2) => {
-  let carryOver = 0; // init carry over to allow for in place digit summing
-  const dummyHead = { val: 0, next: null }; //
-  let curr = dummyHead;
-
-  while (l1 !== null || l2 !== null) {
-    const list1Value = l1 !== null ? l1.val : 0;
-    const list2Value = l2 !== null ? l2.val : 0;
-    const sum = list1Value + list2Value + carryOver;
-    carryOver = Math.floor(sum / 10);
-    curr.next = { val: sum % 10, next: null };
-    curr = curr.next;
-    if (l1 !== null) l1 = l1.next;
-    if (l2 !== null) l2 = l2.next;
-  }
-
-  if (carryOver > 0) {
-    curr.next = { val: carryOver, next: null };
-  }
-
-  return dummyHead.next;
-};
+*/
