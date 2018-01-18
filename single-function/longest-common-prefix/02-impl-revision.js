@@ -11,4 +11,4 @@ const longestCommonPrefix = strs => {
   return prefix;
 };
 
-modue.exports = longestCommonPrefix;
+module.exports = longestCommonPrefix;
