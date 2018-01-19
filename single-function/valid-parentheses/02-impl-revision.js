@@ -1,19 +1,14 @@
-const isValidParentheses = str => {
-  let stack = [];
+const isValidParentheses = (str) => {
+  const parenMap = { "{":"}", "(":")", "[":"]" };
+  const stack = [];
   for (let i = 0; i < str.length; i++) {
-    let c = str.charAt(i);
-    if (c === "(") {
-      stack.push(")");
-    } else if (c === "[") {
-      stack.push("]");
-    } else if (c === "{") {
-      stack.push("}");
-    } else if (stack.length === 0 || stack.pop() !== c) {
-      return false;
+    if (parenMap[str[i]]) {
+      stack.push(parenMap[str[i]]);
+    } else if (stack.pop() !== str[i]) {
+       return false;
     }
   }
-  return stack.length === 0;
+  return (str.length % 2 !== 0) || (stack.length !== 0) || true;
 };
-
 
 module.exports = isValidParentheses;
