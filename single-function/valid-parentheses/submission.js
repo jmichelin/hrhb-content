@@ -22,6 +22,11 @@ Transformation Steps:
   2: '(', push
   3: ')', pop, matches
   4: ')', pop, matches
+  
+  Given '()(' 
+  1: '(', push
+  2: ')', pop, matches
+  4: '(', pop, does not match
 
 const isValidParentheses = (str) => {
   const parenMap = { '{':'}', '(':')', '[':']' };
