@@ -13,10 +13,6 @@ const isValidParentheses = (str) => {
 };
 
 /*
-Input: '()()()'
-Output: boolean
-Constraints: n/a
-
 Strategy: Step through the given string, if a valid opening paren push closing paren on to stack.
 If a non valid opening paren found pop from the stack and not equal to the current string value invalidate string.
 
