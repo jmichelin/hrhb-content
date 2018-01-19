@@ -1,8 +1,14 @@
-const isValidParentheses = require('./02-impl-revision');
+const isValidParentheses = require('./submission');
 
 describe('isValidParentheses', () => {
   it('isValidParentheses should be defined', () => {
     expect(isValidParentheses).toBeDefined();
+  });
+
+  it('given ( return false', () => {
+    const stringOfParens = '(';
+    const expected = false;
+    expect(isValidParentheses(stringOfParens)).toEqual(expected);
   });
 
   it('given (){}[] return true', () => {
