@@ -34,7 +34,7 @@ const isValidParentheses = (str) => {
 }
 
 Big-0
-Since I only have to traverse the string in one direction, one time this is O(n)
+Must traverse full string. O(n).
 
 
  */
