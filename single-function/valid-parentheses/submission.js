@@ -34,7 +34,6 @@ const isValidParentheses = (str) => {
   // iterate over string
     // if current string character is in map push to stack
     // else if char does not map, compare to stack value return false if no match
-  // no invalid parens found return true
 };
 }
 
