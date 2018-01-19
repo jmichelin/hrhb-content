@@ -17,12 +17,11 @@ Strategy: Step through the given string, if a valid opening paren push closing p
 If a non valid opening paren found pop from the stack and not equal to the current string value invalidate string.
 
 Transformation Steps:
-  Given '(())'
-  Step 1: '(' found push ')' onto stack
-  Step 2: '(' found push ')' onto stack
-  Step 3: ')' not found, popped value from stack matches
-  Step 4: ')' not found, popped value from stack matches
-  Step 5: No invalid pairs found, return true.
+  Given '(())' 
+  1: '(', push
+  2: '(', push
+  3: ')', pop, matches
+  4: ')', pop, matches
 
 const isValidParentheses = (str) => {
   const parenMap = { '{':'}', '(':')', '[':']' };
