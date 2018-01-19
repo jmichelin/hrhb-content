@@ -4,7 +4,8 @@
   "description": "john and tim's excellent adventure",
   "main": "",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:w": "jest --watch"
   },
   "author": "manzoid <manzoid@gmail.com>",
   "license": "MIT",
