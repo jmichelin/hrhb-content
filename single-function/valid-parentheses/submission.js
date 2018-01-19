@@ -17,7 +17,6 @@ Strategy: Step through the given string, if a valid opening paren push closing p
 If a non valid opening paren found pop from the stack and not equal to the current string value invalidate string.
 
 Transformation Steps:
-  Acceptable Chars: {}[]()
   Given '(())'
   Step 1: '(' found push ')' onto stack
   Step 2: '(' found push ')' onto stack
