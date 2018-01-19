@@ -1,5 +1,5 @@
 const longestCommonPrefix = strs => {
-  if (strs.length === 0) return "";
+  if (strs.length === 0) return '';
 
   let prefix = strs[0];
 
