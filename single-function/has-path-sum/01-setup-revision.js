@@ -24,14 +24,12 @@ const root = {
   },
 };
 
+// Strategy: Traverse depth-first, decrementing target sum by each node's value. At leaf, return if value matches sum.
+
+// Big-O: Traverse all nodes, O(n).
+
 const hasPathSum = function(node, sum) {
-  // base condition: if no node, return whether the sum has decremented to exactly 0
-  // subtract the current node value from the running sum
-  // return whether recursively calling either the left branch OR the right branch resolves to true
+  // base condition #1: if no node, return false.
+  // base condition #2: if leaf, return whether the sum matches the current value
+  // recurse left and right, decrementing by current value. Return whether either branch is true.
 };
-
-// High Level Overview
-// Traverse to each leaf decrementing target sum by each nodes value along the way. Return whether decremented exactly to zero.
-
-// Big-O
-// Traverses all nodes. Despite some short-circuiting due to the OR clause, algo is effectively O(n).
