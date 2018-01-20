@@ -6,9 +6,9 @@ Linked lists are not often directly used in your day-to-day coding, but you rely
 
 In an interview context, linked lists are a handy topic because they require very little code to set up, and they exercise recursive thinking, pointer (reference) management, and visualizing state.
 
-Make sure you are comfortable with the following topics.
+Make sure you are comfortable with the following aspects related to linked lists.
 
-## Single vs double
+## Singly- vs doubly-linked
 
 Doubly-linked lists are too easy to work with, so they are hardly ever used in an interview setting.
 
@@ -16,24 +16,24 @@ Don't spend much time asking about it. You can just say in passing, "I'll assume
 
 ## Concise literal expression
 
-DO NOT make a big fat `LinkedList` class or even a littler `ListNode` class just to work on a linked list interview problem.
+DO NOT make a big fat `LinkedList` class just to work on a linked list interview problem.
 
-Remember -- most interview problems are old questions, or variations of old questions, and as such they DO NOT need object-oriented machinery in order to be solved. Specifically, they are solvable with the C language, which is simple indeed. It does not even have classes.
-
-Do not write a bunch of class boilerplate when doing a problem. It will just slow you down and make more text you have to manage.
+Generally, do NOT write a bunch of class boilerplate when doing a single-function problem. The extra writing will just slow you down, and you'll have more text to deal with.
 
 ### What to avoid
-DO NOT start off a linked list problem by doing this:
+
+DO NOT start off a linked list problem by making a `LinkedList` class with methods this:
 
 ```javascript
 class LinkedList {
-   constructor() {} // blah
-  insert() {} // blah
-  delete() {} // blah
+   constructor() { /* constructor implementation */ }
+  insert() { /* method implementation */ }
+  delete() { /* method implementation */ }
+  // etc...
 }
 ```
 
-And don't even do this:
+In fact, don't even do this:
 
 ```javascript
 const Node = function(val) {
@@ -44,14 +44,15 @@ const Node = function(val) {
 
 ### What to do instead
 
-Rather, unless you are directed otherwise by the interviewer, the following is all you need (in an interview context) in order to represent a linked list:
+Just implement your list nodes in JavaScript as raw object literals.
+
+Unless you are directed otherwise by the interviewer, the following is all you need (in an interview context) in order to represent a linked list:
 
 ```javascript
 const root = {
   val: 5,
-  left: null,
-  right: null
- };
+  next: null
+};
 ```
 
 You can construct the whole list inline, rapidly, this way:
@@ -69,16 +70,18 @@ const root = {
 };
 ```
 
-It's pretty readable to put this one on line, for a small number of nodes:
+Given a small number of nodes, it's even pretty readable to put this on one line:
 
 ```javascript
 const root = { val: 5, next: { val: 3, next: { val: 7, next: null }}};
 ```
 
 
-#### Comparison to alternatives
+#### Comparison to alternative representations
 
-Note, you _could_ declare node objects individually and wire them together post-creation. It's more writing though, and that means more time and more typos, which leads to even more time.
+You _could_ declare node objects individually and wire them together post-creation.
+
+It's more writing though, and that means more time and more typos, which leads to even more time.
 
 ```javascript
 const nodeA = { val: 5, next: null };
@@ -105,7 +108,7 @@ nodeA.next = nodeB;
 nodeB.next = nodeC;
 ```
 
-You can try to save a couple lines by adding `next` as a constructor parameter...
+You _could_ try to save a couple lines by adding `next` as a constructor parameter...
 
 ```javascript
 const Node = function(val, nextNode) {
@@ -120,6 +123,28 @@ const nodeA = new Node(5, nodeB);
 
 ... but then you wind up writing things backwards, which is confusing and leads to mistakes when you are under live performance pressure.
 
+So, unless your interviewer objects, or you really, really hate this style, try sticking with the simple rendering based on JavaScript's object literals:
+
+```javascript
+const root = {
+  val: 5,
+  next: {
+    val: 3,
+    next: {
+      val: 7,
+      next: null
+    }
+  }
+};
+```
+
+or...
+
+```javascript
+const root = { val: 5, next: { val: 3, next: { val: 7, next: null }}};
+```
+
+Being able to read and write this style demonstrates your fluency with nested data structures, which is a common, important skill.
 
 ## Traversal
 
@@ -131,9 +156,9 @@ This is true in both iterative and recursive traversal.
 
 ## Search
 
-Search simply involves traversing until you find the target value or hit the end. Since there is no random access, there is not much else you can do by default.
+Search simply involves traversing until you find the target value or hit the end, represented by a null value for `next`. Since there is no random access, there is not much else you can do by default.
 
-If you consider optimizing lookup by copying the data from the list nodes into some other data structure, generally that falls out of bounds of typical problems.
+If you consider optimizing lookup by copying the data from the list nodes into some other data structure, generally that falls out of bounds of typical linked list problems.
 
 ## Insert and Delete
 
