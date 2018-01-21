@@ -1,4 +1,13 @@
-// Path sums:
+const hasPathSum = function(node, targetSum) {
+  if (!node) return false;
+  if (!node.left && !node.right) return targetSum === node.val;
+  return hasPathSum(node.left, targetSum - node.val) || hasPathSum(node.right, targetSum - node.val);
+};
+
+module.exports = hasPathSum;
+
+/*
+// / Path sums:
 // 12: 5->3->4
 // 10: 5->3->2
 // 13: 5->8
@@ -24,7 +33,8 @@ const root = {
   },
 };
 
-// Strategy: Traverse depth-first, decrementing target sum by each node's value. At leaf, return if value matches sum.
+// Strategy: Traverse depth-first, decrementing target sum by each node's value. At leaf, return if
+value matches sum.
 
 // Big-O: Traverse all nodes, O(n).
 
@@ -33,3 +43,4 @@ const hasPathSum = function(node, sum) {
   // base condition #2: if leaf, return whether the sum matches the current value
   // recurse left and right, decrementing by current value. Return whether either branch is true.
 };
+*/

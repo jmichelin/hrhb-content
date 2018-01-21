@@ -1,4 +1,4 @@
-const hasPathSum = require('./02-impl-revision.js');
+const hasPathSum = require('./submission');
 
 describe('hasPathSum', () => {
 

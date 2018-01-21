@@ -1,4 +1,4 @@
-const addIntegerLists = require('./02-impl-revision.js');
+const addIntegerLists = require('./submission');
 
 describe('addIntegerLists', () => {
   it('given two lists, 2->4->3 and 5->6->4 will return 7->0->8', () => {
