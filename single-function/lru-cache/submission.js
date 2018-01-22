@@ -1,12 +1,12 @@
 class DoubleLinkedList {
-  constructor (key, value) {
+  constructor(key, value) {
     this.key = key;
     this.value = value;
   }
 }
 
 class LRUCache {
-  constructor (capacity) {
+  constructor(capacity) {
     this.capacity = capacity;
     this.cache = {};
     let head = new DoubleLinkedList(0, 0);
@@ -18,29 +18,29 @@ class LRUCache {
     this.count = 0;
   }
 
-  deleteDoubleLinkedList (node) {
+  deleteDoubleLinkedList(node) {
     node.prev.next = node.next;
     node.next.prev = node.prev;
   }
 
-  addNodeToHead (node) {
+  addNodeToHead(node) {
     node.next = this.head.next;
     this.head.next.prev = node;
     this.head.next = node;
     node.prev = this.head;
   }
 
-  get (key) {
+  get(key) {
     if (this.cache[key]) {
-      return this.ejectLinkedList(this.cache[key])
+      return this.ejectLinkedList(this.cache[key]).value;
     } else {
       return -1;
     }
   }
 
-  set (key, value) {
+  set(key, value) {
     if (this.cache[key]) {
-      this.ejectLinkedList(this.cache[key]);
+      const node = this.ejectLinkedList(this.cache[key]);
       node.value = value;
     } else {
       const node = new DoubleLinkedList(key, value);
@@ -55,13 +55,12 @@ class LRUCache {
     }
   }
 
-  ejectLinkedList ( item ) {
+  ejectLinkedList(item) {
     const node = item;
     this.deleteDoubleLinkedList(node);
     this.addNodeToHead(node);
-    return node.value
+    return node;
   }
 }
 
 module.exports = LRUCache;
-
