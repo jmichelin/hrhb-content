@@ -2,6 +2,24 @@ class DoublyLinkedList {
   constructor(key, value) {
     this.key = key;
     this.value = value;
+    this.prev = null;
+    this.next = null;
+  }
+
+  linkToNext(nextNode) {
+    this.next = nextNode;
+    nextNode.prev = this;
+  }
+
+  // Note: delete and insertAfter presume the presence of head/tail sentinel nodes.
+  delete() {
+    this.prev.next = this.next;
+    this.next.prev = this.prev;
+  }
+
+  insert(node) {
+    node.linkToNext(this.next);
+    this.linkToNext(node);
   }
 }
 
@@ -9,18 +27,12 @@ class LRUCache {
   constructor(capacity) {
     this.capacity = capacity;
     this.cache = {};
-    let head = new DoublyLinkedList(0, 0);
-    let tail = new DoublyLinkedList(0, 0);
-    head.next = tail;
-    tail.prev = head;
-    this.head = head;
-    this.tail = tail;
-    this.count = 0;
-  }
 
-  deleteDoublyLinkedList(node) {
-    node.prev.next = node.next;
-    node.next.prev = node.prev;
+    this.head = new DoublyLinkedList(0, 0);
+    this.tail = new DoublyLinkedList(0, 0);
+    this.head.linkToNext(this.tail);
+
+    this.count = 0;
   }
 
   addNodeBeforeHead(node) {
@@ -35,7 +47,7 @@ class LRUCache {
       const { value } = this.cacheReturnNode(this.cache[key]);
       return value;
     } else {
-      return -1;
+      return null;
     }
   }
 
@@ -46,18 +58,21 @@ class LRUCache {
     } else {
       this.cache[key] = new DoublyLinkedList(key, value);
       this.addNodeBeforeHead(this.cache[key]);
-      if (this.count < this.capacity) {
-        this.count++;
-      } else {
-        delete this.cache[this.tail.prev.key];
-        this.deleteDoublyLinkedList(this.tail.prev);
-      }
+      this.manageCapacity();
     }
   }
 
-  cacheReturnNode(node) {
-    const currentNode = node;
-    this.deleteDoublyLinkedList(currentNode);
+  manageCapacity() {
+    if (this.count < this.capacity) {
+      this.count++;
+    } else {
+      delete this.cache[this.tail.prev.key];
+      this.tail.prev.delete();
+    }
+  }
+
+  cacheReturnNode(currentNode) {
+    currentNode.delete();
     this.addNodeBeforeHead(currentNode);
     return currentNode;
   }
@@ -66,21 +81,37 @@ class LRUCache {
 module.exports = LRUCache;
 
 /*
-  Create a cache of a given storage capacity, allow for setting and getting of data where the least
-  recently used node is ejected when the cache is full and a new node is inserted. Adding a new node
-  to the front and update the node pointers. O(logn)
+  Create a key-value cache of a given item capacity.
+  Use insertion at front of doubly-linked-list to maintain ascending order of recent-use.
+  Upon insertion, least-recently-used item is evicted from the tail of the list.
+
+  Big O: O(logn)
+
+  Note: intend to use a "sentinel" head and tail on either end of the actual item-nodes.
 
   Steps
     1.  new cache of size 2
-    2.  set 1 = (1)
-    3.  set 2 = (1)->(2)
-    4.  get 1 = set access flag and return 1
-    5.  set 3 = (1)->(3) (2) gets ejected
-    6.  get 2 = returns not found
-    7.  set 4 = (4)->(3) (1) gets ejected
-    8.  get 1 = returns not found
-    9.  get 3 = set access flag and return 3
-    10. get 4 = set access flag and return 4
+    2.  set A, list: A
+    3.  set B, list: B -> A
+    4.  get A, return A, list: A -> B
+    5.  set C, over capacity / evict, list: C -> A
+    6.  get B = return null
+    7.  set D = over capacity / evict, list: D -> C
+    8.  get A = return null
+    9.  get C = return C, list: D -> C
+    10. get D = return D
+
+class DoublyLinkedList {
+  // attrs: key, value, prev, next
+  linkToNext(nextNode) {
+  }
+  delete() {
+    // delete self
+  }
+  insert(node) {
+    // insert node after self
+  }
+}
 
 class LRUCache {
   constructor(capacity) {
@@ -90,21 +121,23 @@ class LRUCache {
     this.count = 0;
   }
 
-  deleteDoublyLinkedList(node) {
-    // swap next and prev
-  }
-
   addNodeBeforeHead(node) {
     // swap next and head
   }
 
   get(key) {
-    // return key if found
+    // return value for key, if found
   }
 
   set(key, value) {
     // if key found in cache return value
-    // else insert new key value pair and handle collisions
+    // else insert new key value pair
+    // trigger capacity management (eviction if necessary)
+  }
+
+  manageCapacity() {
+    // track the item count
+    // process eviction if necessary
   }
 
   cacheReturnNode(node) {
