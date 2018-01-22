@@ -35,13 +35,6 @@ class LRUCache {
     this.count = 0;
   }
 
-  addNodeBeforeHead(node) {
-    node.next = this.head.next;
-    this.head.next.prev = node;
-    this.head.next = node;
-    node.prev = this.head;
-  }
-
   get(key) {
     if (this.cache[key]) {
       const { value } = this.cacheReturnNode(this.cache[key]);
@@ -57,7 +50,7 @@ class LRUCache {
       node.value = value;
     } else {
       this.cache[key] = new DoublyLinkedList(key, value);
-      this.addNodeBeforeHead(this.cache[key]);
+      this.head.insert(this.cache[key]);
       this.manageCapacity();
     }
   }
@@ -73,7 +66,7 @@ class LRUCache {
 
   cacheReturnNode(currentNode) {
     currentNode.delete();
-    this.addNodeBeforeHead(currentNode);
+    this.head.insert(currentNode);
     return currentNode;
   }
 }
@@ -110,6 +103,7 @@ class DoublyLinkedList {
   }
   insert(node) {
     // insert node after self
+    // this is used to swap next and the real head (not the sentinel-head)
   }
 }
 
@@ -119,10 +113,6 @@ class LRUCache {
     this.cache = {};
     // set head and tail to new doubly linked list
     this.count = 0;
-  }
-
-  addNodeBeforeHead(node) {
-    // swap next and head
   }
 
   get(key) {
