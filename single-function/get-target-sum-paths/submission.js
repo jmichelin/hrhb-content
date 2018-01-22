@@ -1,3 +1,26 @@
+const buildPath = (root, sum, paths, queue) => {
+  if (!root) return [];
+  queue.push(root.val);
+  buildPath(root.left, sum, paths, queue);
+  if (!root.left && !root.right) {
+    const queueSum = queue.reduce((a, b) => a + b);
+    if (queueSum === sum) paths.push(queue.slice());
+  }
+  buildPath(root.right, sum, paths, queue);
+  queue.pop();
+  return paths;
+};
+
+const getTargetSumPaths = (root, sum) => {
+  if (!root) return [];
+  const paths = [];
+  const queue = [];
+  return buildPath(root, sum, paths, queue);
+};
+
+module.exports = getTargetSumPaths;
+
+/*
 // Path Sums:
 // 12: 5->3->4
 // 10: 5->3->2
@@ -36,3 +59,4 @@ const pathSum = function(node, sum) {
 // Traverses all nodes in order to capture every matching path.
 // Possible to short-circuit if node.val or current running total is greater than target sum.
 // O(n)
+*/
