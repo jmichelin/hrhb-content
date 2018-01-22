@@ -1,4 +1,4 @@
-class Node {
+class DoubleLinkedList {
   constructor (key, value) {
     this.key = key;
     this.value = value;
@@ -9,8 +9,8 @@ class LRUCache {
   constructor (capacity) {
     this.capacity = capacity;
     this.cache = {};
-    let head = new Node(0, 0);
-    let tail = new Node(0, 0);
+    let head = new DoubleLinkedList(0, 0);
+    let tail = new DoubleLinkedList(0, 0);
     head.next = tail;
     tail.prev = head;
     this.head = head;
@@ -18,7 +18,7 @@ class LRUCache {
     this.count = 0;
   }
 
-  deleteNode (node) {
+  deleteDoubleLinkedList (node) {
     node.prev.next = node.next;
     node.next.prev = node.prev;
   }
@@ -32,10 +32,7 @@ class LRUCache {
 
   get (key) {
     if (this.cache[key]) {
-      let node = this.cache[key]
-      this.deleteNode(node);
-      this.addNodeToHead(node);
-      return node.value;
+      return this.ejectLinkedList(this.cache[key])
     } else {
       return -1;
     }
@@ -43,21 +40,26 @@ class LRUCache {
 
   set (key, value) {
     if (this.cache[key]) {
-      let node = this.cache[key]
+      this.ejectLinkedList(this.cache[key]);
       node.value = value;
-      this.deleteNode(node);
-      this.addNodeToHead(node);
     } else {
-      let node = new Node(key, value);
+      const node = new DoubleLinkedList(key, value);
       this.addNodeToHead(node);
       this.cache[key] = node;
       if (this.count < this.capacity) {
         this.count++;
       } else {
         delete this.cache[this.tail.prev.key];
-        this.deleteNode(this.tail.prev);
+        this.deleteDoubleLinkedList(this.tail.prev);
       }
     }
+  }
+
+  ejectLinkedList ( item ) {
+    const node = item;
+    this.deleteDoubleLinkedList(node);
+    this.addNodeToHead(node);
+    return node.value
   }
 }
 
