@@ -11,7 +11,7 @@
   * [5 min] [A Dummy's Guide to Redux and Thunk in React](https://codepen.io/stowball/post/a-dummy-s-guide-to-redux-and-thunk-in-react)
 
 ## Redux tools & middleware
-* [Redux Chrome Extension](for this to work you need to install the library in your repo and modify the store)
+* [Redux Chrome Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) For this to work  you need to install the library in your repo and modify store. See repo below.
   * [Redux Extension Repo](https://github.com/zalmoxisus/redux-devtools-extension)
 * [Redux Logger](https://github.com/evgenyrodionov/redux-logger)
 * [Redux Thunk](https://github.com/gaearon/redux-thunk)
