@@ -1,4 +1,4 @@
-const LRUCache = require('./submission');
+const LRUCache = require('./reference-solution');
 
 describe('isValidParentheses', () => {
 
