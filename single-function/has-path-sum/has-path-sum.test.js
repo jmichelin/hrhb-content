@@ -1,4 +1,4 @@
-const hasPathSum = require('./submission');
+const hasPathSum = require('./reference-solution');
 
 describe('hasPathSum', () => {
 

@@ -1,4 +1,4 @@
-const isValidParentheses = require('./submission');
+const isValidParentheses = require('./reference-solution');
 
 describe('isValidParentheses', () => {
   it('isValidParentheses should be defined', () => {

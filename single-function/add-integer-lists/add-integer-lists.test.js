@@ -1,4 +1,4 @@
-const addIntegerLists = require('./submission');
+const addIntegerLists = require('./reference-solution');
 
 describe('addIntegerLists', () => {
   it('given two lists, 2->4->3 and 5->6->4 will return 7->0->8', () => {
