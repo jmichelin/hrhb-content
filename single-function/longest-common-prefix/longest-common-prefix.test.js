@@ -1,4 +1,4 @@
-const longestCommonPrefix = require('./reference-solution.js');
+const longestCommonPrefix = require('./reference-solution');
 
 describe('longestCommonPrefix', () => {
   it('given empty array, [] return ""', () => {
