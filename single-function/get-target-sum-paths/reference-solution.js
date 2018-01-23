@@ -21,10 +21,12 @@ const getTargetSumPaths = (root, sum) => {
 module.exports = getTargetSumPaths;
 
 /*
-// Path Sums:
-// 12: 5->3->4
-// 10: 5->3->2
-// 12: 5->7
+Path Sums:
+Given 12 as sum:
+  Step 1: 5->3->4 = 12 matches push
+  Step 2: 5->3->2 = 10
+  Step 3: 5->7 = 12 matches push
+  Step 4: Return [[5,3,4],[5,7]]
 
 const root = {
   val: 5,
