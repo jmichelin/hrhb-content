@@ -35,18 +35,18 @@ const root = {
     left: {
       val: 4,
       left: null,
-      right: null
+      right: null,
     },
     right: {
       val: 2,
       right: null,
-      left: null
+      left: null,
     }
   },
   right: {
     val: 7,
     left: null,
-    right: null
+    right: null,
   },
 };
 
