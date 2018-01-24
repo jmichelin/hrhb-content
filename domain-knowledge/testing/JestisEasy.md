@@ -1,4 +1,4 @@
-##Jest is Easy
+## Jest is Easy
 
 * [5 min] [Getting Started](https://facebook.github.io/jest/docs/en/getting-started.html
 )
