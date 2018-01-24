@@ -1,7 +1,6 @@
 ## Jest is Easy
 
-* [5 min] [Getting Started](https://facebook.github.io/jest/docs/en/getting-started.html
-)
+* [5 min] [Getting Started](https://facebook.github.io/jest/docs/en/getting-started.html)
 * [5 min] [Jest Cheat Sheet](https://github.com/sapegin/jest-cheat-sheet)
 * [15 min] [Testing React Components w/ Jest and Enzyme](https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f)
 * [10 min] [Jest React example](https://github.com/facebook/jest/tree/master/examples/react)
