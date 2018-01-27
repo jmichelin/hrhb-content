@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WaterWalls</title>
+</head>
+<body>
+  <div id="viewport">
+    <div id="answer">
+      <!-- ANSWER RENDERS HERE -->
+    </div>
+    <div class="outer" id="outer">
+      <form action="/api/waterCalc/" method="POST" id="height">
+        Enter a list of numbers separated by spaces:
+        <input type="input" name="heightInput">
+        <input type="submit" value="Submit">
+      </form>
+      <div id="container">
+        <!-- INSERT DIV TABLE HERE -->
+      </div>
+    </div>
+  </div>
+  <script src="./actions.js"></script>
+  <script src="./utilities.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
