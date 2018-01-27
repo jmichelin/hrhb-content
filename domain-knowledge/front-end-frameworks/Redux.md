@@ -1,4 +1,4 @@
-## Getting started with Redux
+## Getting started
 
 * [7 min] [Redux Introduction & Overview](https://www.youtube.com/watch?v=ucd5x3Ka3gw)
 * [120 min] [Getting Started w/ Redux tutorials](https://egghead.io/courses/getting-started-with-redux)
@@ -10,7 +10,7 @@
     * [~] [What the heck is Redux Thunk](https://daveceddia.com/what-is-a-thunk/)
   * [5 min] [A Dummy's Guide to Redux and Thunk in React](https://codepen.io/stowball/post/a-dummy-s-guide-to-redux-and-thunk-in-react)
 
-## Redux tools & middleware
+## Tools & middleware
 * [Redux Chrome Extension](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) For this to work  you need to install the library in your repo and modify store. See repo below.
   * [Redux Extension Repo](https://github.com/zalmoxisus/redux-devtools-extension)
 * [Redux Logger](https://github.com/evgenyrodionov/redux-logger)
