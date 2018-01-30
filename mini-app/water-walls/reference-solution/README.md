@@ -1,7 +1,8 @@
-1. Run the server with npm start. **requires nodemon to be installed globally**
+1. In the root of the folder run npm install in console.
+2. Run the server with npm start. **requires nodemon to be installed globally**
 
   a. Else you can run with node ./server/index.js
 
-2. Right Click index.html in the client folder and open in your browser.
+3. Navigate to 127.0.0.1:8080 **CANNOT USE LOCALHOST!!**
 
-3. Enter in a series of numbers separated by spaces.
+4. Enter in a series of numbers separated by commas.

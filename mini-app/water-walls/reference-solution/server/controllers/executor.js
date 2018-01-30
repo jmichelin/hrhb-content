@@ -1,4 +1,4 @@
-const maxArea = require('../helpers/findWater.js');
+const maxArea = require('../helpers/find-water.js');
 
 const waterWallsCont = {
   'POST': (req, res) => {

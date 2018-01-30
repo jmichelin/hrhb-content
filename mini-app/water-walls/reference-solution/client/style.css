@@ -1,4 +1,13 @@
+.outer {
+  width: 100%;
+}
+
 #container {
-  position: absolute;
-  height: 1500px;
+  margin: 100px auto;
+  /*width: 405px;*/
+}
+
+.form {
+  margin: 0 auto;
+  width: 400px;
 }
