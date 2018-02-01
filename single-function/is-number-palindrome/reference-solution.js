@@ -13,7 +13,7 @@ const isNumberPalindrome = (number) => {
 module.exports = isNumberPalindrome;
 
 /*
-Make a copy of the original input and pluck units digit using modulo and place in reversed version
+Make a copy of the original input and assign units digit using modulo and place in reversed version
 until done, compare the reversed number with the original. If equal, return true.
 
 Steps
@@ -43,12 +43,12 @@ Steps
 
 
 const isNumberPalindrome = (number) => {
-  // copy input number to pluck from
+  // copy input number to build reversed number
   // init reversed number and digit
   // iterate until copy is 0 or less
-    // grab digit from units place;
-    // push digit into reversed number
-    // remove digit from copy
+    // current digit is copy % 10
+    // multiply reversed number by 10 and add the digit
+    // divide the number copy by 10 and remove decimals
   }
   return reversed === number;
 }
