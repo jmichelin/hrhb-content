@@ -13,6 +13,7 @@ const isNumberPalindrome = (number) => {
 module.exports = isNumberPalindrome;
 
 /*
+https://gist.github.com/jmichelin/25e4e6aff730b0fdeaf57cacf003d85a
 Make a copy of the original input and assign units digit using modulo and place in reversed version
 until done, compare the reversed number with the original. If equal, return true.
 
