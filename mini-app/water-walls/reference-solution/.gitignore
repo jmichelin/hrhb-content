@@ -1,0 +1,15 @@
+## MAC files ##
+.DS_Store
+
+## NPM ##
+npm
+npm-debug.log
+node_modules/
+
+pids
+logs
+results
+
+## Floobits ##
+.floo
+.flooignore
