@@ -1,53 +1,49 @@
-const buildTable = (height) => {
-  document.getElementById('container').innerHTML = "";
-  for (let i = 0; i < height.length; i++) {
-    let div = document.createElement('div');
-    div.style.position = 'fixed';
-    div.style.width = `${(100) + 'px'}`;
-    div.style.float = 'left';
-    div.style.left = `${(i * 100) + 'px'}`;
-    div.style.height = `${(height[i] * 100) + 'px'}`;
-    div.style.bottom = '0px';
-    div.style.background = 'red';
-    div.style.color = 'white';
-    div.style.borderColor = 'black';
-    div.style.borderStyle = 'solid';
-    div.style.zIndex = '2';
-    div.innerHTML = 'wall';
+const buildTable = (height, obj) => {
+  let wA = obj.waterArea;
+  let widthCalc = wA.end - wA.start;
+  let heightCalc = heightComparer([wA.startHeight, wA.endHeight]);
+  document.getElementById('container').innerHTML = '';
+  document.getElementById('answer').innerHTML = '';
+  document.getElementById('container').style.width = `${(height.length + 1) * 50 + 55}` + 'px';
 
-    document.getElementById('container').appendChild(div);
+  // iterate for the height
+  for (let i = 10; i > 0; i--) {
+    for (let j = -1; j < height.length; j++) {
+      let div = document.createElement('div');
+      if (j === -1) {
+        div.innerHTML = `${i}`;
+      }
+      if ((j >= wA.start && j <= wA.end) && i <= heightCalc[0]) {
+        div.style.background = 'turquoise';
+      }
+      if (height[j] < height[j-1] && height[j] < height[j+1]) {
+        let heightCheck = heightComparer([height[j-1], height[j+1]])[0];
+        if (i <= heightCheck) {
+          div.style.background = 'turquoise';
+        }
+      }
+      if ((j >= 0 && j !== wA.start || j >= 0 && j !== wA.end) && i <= height[j]) {
+        div.style.background = 'grey';
+      }
+      if (j === wA.start && i <= wA.startHeight || j === wA.end && i <= wA.endHeight) {
+        div.style.background = 'black';
+      }
+      div.style.float = 'left';
+      div.style.width = '50px';
+      div.style.height = '50px';
+      div.style.borderStyle = 'solid';
+      div.style.borderColor = 'black';
+      document.getElementById('container').appendChild(div);
+    }
   }
-};
-
-const revealWater = (obj) => {
-  let startH = obj.waterArea.startHeight;
-  let endH = obj.waterArea.endHeight;
-  let widthCalc = obj.waterArea.end - obj.waterArea.start;
-  let heightCalc = heightComparer([startH, endH]);
-  let water = document.createElement('div');
-  let span = document.createElement('span');
-  let answer = document.createTextNode(obj.waterArea.maxW.toString() + ' units is the max water area');
-  document.getElementById('answer').innerHTML = "";
-  span.style.color = "blue";
-  span.appendChild(answer);
-  document.getElementById('answer').appendChild(span);
-  water.style.position = 'absolute';
-  water.style.marginTop = '0px';
-  water.style.bottom = '0px';
-  water.style.zIndex = '1';
-  water.style.left = `${(obj.waterArea.start * 100) + 'px'}`;
-  water.style.width = `${(100 * widthCalc) + 'px'}`;
-  water.style.height = `${(heightCalc[0] * 100) + 'px'}`
-  water.style.background = 'turquoise';
-  document.getElementById('container').appendChild(water);
-};
+}
 
 document.querySelector('#height').addEventListener('submit', (e) => {
   e.preventDefault();
   let rawInput = document.querySelector('input[type=input]').value;
   let convertedInput = { height: strNumConverter(rawInput) };
-  buildTable(convertedInput.height);
+  document.querySelector('input[type=input]').value = '';
   calculate(convertedInput).then((res) => {
-    revealWater(res);
+    buildTable(convertedInput.height, res);
   });
 });

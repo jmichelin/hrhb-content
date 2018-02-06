@@ -9,14 +9,17 @@ const maxArea = (height) => {
   let temp;
 
   while (start < end) {
-    temp = Math.max(Math.min(height[start], height[end]) * (end-start));
-    if (temp > maxW) {
+    let pole1 = height[start];
+    let pole2 = height[end];
+    temp = Math.max(Math.min(pole1, pole2) * (end-start));
+    console.log(pole1, temp);
+    if (temp >= maxW) {
       maxW = temp;
       result.maxW = maxW;
       result.start = start;
-      result.startHeight = height[start];
+      result.startHeight = pole1;
       result.end = end;
-      result.endHeight = height[end];
+      result.endHeight = pole2;
     };
     if (height[start] < height[end]) {
       start++;

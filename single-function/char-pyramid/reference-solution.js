@@ -1,3 +1,28 @@
+// Part 1
+const generatePyramidData = (pyramidHeight) => {
+  let result = [];
+  let rowLength = (2 * pyramidHeight) - 1;
+  let rowMidpoint = Math.floor(rowLength / 2);
+
+  for (let i = 0; i < pyramidHeight; i++) {
+    let row = [];
+    let currentRow = i;
+    let midpointLeftOffset = rowMidpoint - currentRow;
+    let midpointRightOffset = rowMidpoint + currentRow;
+    for (let j = 0; j < rowLength; j++) {
+      if (j >= midpointLeftOffset && j <= midpointRightOffset) {
+        row.push(true);
+      } else {
+        row.push(false);
+      }
+    }
+    result.push(row);
+  }
+  return result;
+};
+
+module.exports = generatePyramidData;
+
 /*
 Given an `n` of 3, then the *row length* is `(2 * n) - 1 => 5`.
 
@@ -23,3 +48,5 @@ const generatePyramidData = function(pyramidHeight) {
 };
 ```
 */
+
+//es6
