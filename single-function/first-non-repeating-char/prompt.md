@@ -27,7 +27,7 @@ Strategy: Map char counts into a hash keyed by char, then find the first char wi
 Big O: O(n) time, O(k)->O(1) space
 Still O(1) space because fixed number of letters, doesn't scale with input size.
 
-function findFirstNonRepeatChar(s) {
+const findFirstNonRepeatChar = (s) => {
   // for each char
      // increment char count
   // for each found char
@@ -37,18 +37,18 @@ function findFirstNonRepeatChar(s) {
 ```
 
 ```
-function findFirstNonRepeatChar(s) {
-  var foundChars = {};
+const findFirstNonRepeatChar = (s) => {
+  const foundChars = {};
   s = s.split('');
-  for (var i = 0; i < s.length; i++) {
-    var ch = s[i];
+  for (let i = 0; i < s.length; i++) {
+    let ch = s[i];
     if (!foundChars[ch])
       foundChars[ch] = 1;
     else
       foundChars[ch]++;
   }
 
-  for (var key in foundChars) {
+  for (let key in foundChars) {
     if (foundChars[key] === 1) return key;
   }
 
